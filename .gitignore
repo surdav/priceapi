@@ -1,9 +1,9 @@
 HELP.md
 
 # Maven / Gradle build outputs
-target/
-build/
-out/
+/target/
+/build/
+/out/
 !**/src/main/**/target/
 !**/src/test/**/target/
 !**/src/main/**/build/
