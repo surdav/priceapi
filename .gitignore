@@ -1,0 +1,62 @@
+HELP.md
+
+# Maven / Gradle build outputs
+target/
+build/
+out/
+!**/src/main/**/target/
+!**/src/test/**/target/
+!**/src/main/**/build/
+!**/src/test/**/build/
+
+# Maven / Gradle wrappers and caches
+.mvn/wrapper/maven-wrapper.jar
+.gradle
+/buildSrc/.gradle/
+gradlew
+gradlew.bat
+
+# Spring Tool Suite
+.apt_generated
+.classpath
+.factorypath
+.project
+.settings
+.springBeans
+.sts4-cache
+
+# IntelliJ IDEA
+.idea/
+*.iml
+*.ipr
+*.iws
+
+# NetBeans
+/nbproject/private/
+/nbbuild/
+/dist/
+/nbdist/
+/.nb-gradle/
+
+# VS Code
+.vscode/
+
+# Compiled files and packages
+*.class
+*.jar
+!gradle-wrapper.jar
+*.war
+*.nar
+*.ear
+*.zip
+*.tar.gz
+*.rar
+
+# Logs and temporary files
+*.log
+*.ctxt
+.mtj.tmp/
+hs_err_pid*
+
+# OS files
+.DS_Store
