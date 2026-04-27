@@ -1,0 +1,186 @@
+{
+  "info": {
+    "_postman_id": "7f96f0e8-5f3b-4c86-9ad8-6a3fe0a7d101",
+    "name": "Price API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": "Postman collection with the five required pricing scenarios."
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "http://localhost:8080"
+    }
+  ],
+  "item": [
+    {
+      "name": "Test 1 - 2020-06-14 10:00:00",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/api/v1/prices?applicationDate=2020-06-14T10:00:00&productId=35455&brandId=1",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "api",
+            "v1",
+            "prices"
+          ],
+          "query": [
+            {
+              "key": "applicationDate",
+              "value": "2020-06-14T10:00:00"
+            },
+            {
+              "key": "productId",
+              "value": "35455"
+            },
+            {
+              "key": "brandId",
+              "value": "1"
+            }
+          ]
+        },
+        "description": "Expected result: priceList=1, price=35.50"
+      },
+      "response": []
+    },
+    {
+      "name": "Test 2 - 2020-06-14 16:00:00",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/api/v1/prices?applicationDate=2020-06-14T16:00:00&productId=35455&brandId=1",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "api",
+            "v1",
+            "prices"
+          ],
+          "query": [
+            {
+              "key": "applicationDate",
+              "value": "2020-06-14T16:00:00"
+            },
+            {
+              "key": "productId",
+              "value": "35455"
+            },
+            {
+              "key": "brandId",
+              "value": "1"
+            }
+          ]
+        },
+        "description": "Expected result: priceList=2, price=25.45"
+      },
+      "response": []
+    },
+    {
+      "name": "Test 3 - 2020-06-14 21:00:00",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/api/v1/prices?applicationDate=2020-06-14T21:00:00&productId=35455&brandId=1",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "api",
+            "v1",
+            "prices"
+          ],
+          "query": [
+            {
+              "key": "applicationDate",
+              "value": "2020-06-14T21:00:00"
+            },
+            {
+              "key": "productId",
+              "value": "35455"
+            },
+            {
+              "key": "brandId",
+              "value": "1"
+            }
+          ]
+        },
+        "description": "Expected result: priceList=1, price=35.50"
+      },
+      "response": []
+    },
+    {
+      "name": "Test 4 - 2020-06-15 10:00:00",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/api/v1/prices?applicationDate=2020-06-15T10:00:00&productId=35455&brandId=1",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "api",
+            "v1",
+            "prices"
+          ],
+          "query": [
+            {
+              "key": "applicationDate",
+              "value": "2020-06-15T10:00:00"
+            },
+            {
+              "key": "productId",
+              "value": "35455"
+            },
+            {
+              "key": "brandId",
+              "value": "1"
+            }
+          ]
+        },
+        "description": "Expected result: priceList=3, price=30.50"
+      },
+      "response": []
+    },
+    {
+      "name": "Test 5 - 2020-06-16 21:00:00",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/api/v1/prices?applicationDate=2020-06-16T21:00:00&productId=35455&brandId=1",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "api",
+            "v1",
+            "prices"
+          ],
+          "query": [
+            {
+              "key": "applicationDate",
+              "value": "2020-06-16T21:00:00"
+            },
+            {
+              "key": "productId",
+              "value": "35455"
+            },
+            {
+              "key": "brandId",
+              "value": "1"
+            }
+          ]
+        },
+        "description": "Expected result: priceList=4, price=38.95"
+      },
+      "response": []
+    }
+  ]
+}
