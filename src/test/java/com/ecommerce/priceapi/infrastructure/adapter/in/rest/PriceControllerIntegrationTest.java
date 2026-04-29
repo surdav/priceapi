@@ -66,4 +66,53 @@ class PriceControllerIntegrationTest {
                 .andExpect(jsonPath("$.message").exists())
                 .andExpect(jsonPath("$.timestamp").exists());
     }
+
+    @ParameterizedTest
+    @CsvSource({
+            "productId,35455,brandId,1",
+            "applicationDate,2020-06-14T10:00:00,productId,35455"
+    })
+    void shouldReturnClean400JsonWhenARequiredParameterIsMissing(
+            String firstParamKey,
+            String firstParamValue,
+            String secondParamKey,
+            String secondParamValue
+    ) throws Exception {
+        mockMvc.perform(get("/api/v1/prices")
+                        .param(firstParamKey, firstParamValue)
+                        .param(secondParamKey, secondParamValue))
+                .andExpect(status().isBadRequest())
+                .andExpect(jsonPath("$.status").value(400))
+                .andExpect(jsonPath("$.error").value("Bad Request"))
+                .andExpect(jsonPath("$.message").value("Request validation failed"))
+                .andExpect(jsonPath("$.timestamp").exists())
+                .andExpect(jsonPath("$.details").isArray())
+                .andExpect(jsonPath("$.details[0]").exists());
+    }
+
+    @ParameterizedTest
+    @CsvSource({
+            "applicationDate,not-a-date,productId,35455,brandId,1",
+            "applicationDate,2020-06-14T10:00:00,productId,not-a-number,brandId,1"
+    })
+    void shouldReturnClean400JsonWhenAParameterHasAnInvalidType(
+            String firstParamKey,
+            String firstParamValue,
+            String secondParamKey,
+            String secondParamValue,
+            String thirdParamKey,
+            String thirdParamValue
+    ) throws Exception {
+        mockMvc.perform(get("/api/v1/prices")
+                        .param(firstParamKey, firstParamValue)
+                        .param(secondParamKey, secondParamValue)
+                        .param(thirdParamKey, thirdParamValue))
+                .andExpect(status().isBadRequest())
+                .andExpect(jsonPath("$.status").value(400))
+                .andExpect(jsonPath("$.error").value("Bad Request"))
+                .andExpect(jsonPath("$.message").value("Request validation failed"))
+                .andExpect(jsonPath("$.timestamp").exists())
+                .andExpect(jsonPath("$.details").isArray())
+                .andExpect(jsonPath("$.details[0]").exists());
+    }
 }
