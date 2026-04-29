@@ -3,7 +3,7 @@
     "_postman_id": "7f96f0e8-5f3b-4c86-9ad8-6a3fe0a7d101",
     "name": "Price API",
     "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-    "description": "Postman collection with the five required pricing scenarios."
+    "description": "Postman collection with the required pricing scenarios and validation error cases."
   },
   "variable": [
     {
@@ -179,6 +179,104 @@
           ]
         },
         "description": "Expected result: priceList=4, price=38.95"
+      },
+      "response": []
+    },
+    {
+      "name": "Validation Error - Missing brandId",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/api/v1/prices?applicationDate=2020-06-14T10:00:00&productId=35455",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "api",
+            "v1",
+            "prices"
+          ],
+          "query": [
+            {
+              "key": "applicationDate",
+              "value": "2020-06-14T10:00:00"
+            },
+            {
+              "key": "productId",
+              "value": "35455"
+            }
+          ]
+        },
+        "description": "Expected result: 400 Bad Request with validation details for the missing brandId parameter."
+      },
+      "response": []
+    },
+    {
+      "name": "Validation Error - Invalid applicationDate",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/api/v1/prices?applicationDate=not-a-date&productId=35455&brandId=1",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "api",
+            "v1",
+            "prices"
+          ],
+          "query": [
+            {
+              "key": "applicationDate",
+              "value": "not-a-date"
+            },
+            {
+              "key": "productId",
+              "value": "35455"
+            },
+            {
+              "key": "brandId",
+              "value": "1"
+            }
+          ]
+        },
+        "description": "Expected result: 400 Bad Request with validation details for an invalid applicationDate value."
+      },
+      "response": []
+    },
+    {
+      "name": "Validation Error - Invalid productId",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/api/v1/prices?applicationDate=2020-06-14T10:00:00&productId=not-a-number&brandId=1",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "api",
+            "v1",
+            "prices"
+          ],
+          "query": [
+            {
+              "key": "applicationDate",
+              "value": "2020-06-14T10:00:00"
+            },
+            {
+              "key": "productId",
+              "value": "not-a-number"
+            },
+            {
+              "key": "brandId",
+              "value": "1"
+            }
+          ]
+        },
+        "description": "Expected result: 400 Bad Request with validation details for an invalid productId value."
       },
       "response": []
     }
